@@ -1,0 +1,7 @@
+
+Z
+java:S1197"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ8¢¢ó½í.
+r	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç€éûÿÿÿÿ8¯•‚Áí.
+v
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(­õêùÿÿÿÿ8Óğ­Ãí.

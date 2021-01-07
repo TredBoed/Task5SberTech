@@ -1,0 +1,5 @@
+# Project exclude paths
+/_ATM/_PinValidator/target/
+/_ATM/_Terminal/target/
+/_ATM/_UI/target/
+/_TerminalServer/target/

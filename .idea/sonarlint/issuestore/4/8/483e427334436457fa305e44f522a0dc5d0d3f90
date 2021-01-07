@@ -1,0 +1,14 @@
+
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Îü±¯8¹Æ©Áí.
+]	java:S125"<This block of commented-out lines of code should be removed.(æ¶Î§ÿÿÿÿÿ8¶ñþÂí.
+L
+java:S1068	"*Remove this unused "server" private field.(×°ÕÀÿÿÿÿÿ8ÊÎ¸Âí.
+R
+java:S1068
+"0Remove this unused "pinValidator" private field.(êØêîûÿÿÿÿ8±Ì¥Áí.
+L
+java:S1068"*Remove this unused "userId" private field.(±­Ú§ÿÿÿÿÿ8¶ñþÂí.
+U	java:S106"9Replace this use of System.out or System.err by a logger.(—Úë8ÞËþÂí.
+]	java:S125"<This block of commented-out lines of code should be removed.(Šá¿ýÿÿÿÿ8Þ»ªÃí.
+X	java:S125$"<This block of commented-out lines of code should be removed.(¾óÚð8Þ»ªÃí.
+W	java:S125("<This block of commented-out lines of code should be removed.(‡¯«G8Þ»ªÃí.
