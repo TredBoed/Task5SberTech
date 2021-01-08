@@ -11,34 +11,47 @@ public class TerminalImpl implements Terminal {
     private final TerminalServer server;
     private final PinValidator pinValidator;
     private Controller controller = new Controller();
-    private Integer userId;
+    private String userId;
     private Boolean isConnected;
 
-    public TerminalImpl(Integer userId) {
+    public TerminalImpl(String userId) {
         this.userId = userId;
         this.isConnected = false;
         //Bill creating
         //this is example without database
-        this.server = new TerminalServer(45678, 2345);
+        this.server = new TerminalServer("45678", "2345");
         this.pinValidator = new PinValidator();
     }
 
     public void Start() {
         controller.SendToDisplay("Enter pin");
-        Integer pin = controller.InputPin();
-        if (pinValidator.checkPin(pin) && this.server.IsAccessToBill(userId, pin)) {
-            this.isConnected = true;
-            controller.SendToDisplay("Connected");
+
+        while(true)
+        {
+            String pin = controller.InputPin();
+            if (pinValidator.checkPin(this.server, userId, pin)) {
+                this.isConnected = true;
+                controller.SendToDisplay("Connected");
+                break;
+            }
         }
+
     }
 
     public void WithDraw() {
         if (this.isConnected) {
             controller.SendToDisplay("Enter amount:");
-            server.WithdrawCurrency(new BigDecimal(controller.InputData()));
-            controller.SendToDisplay("Success");
+
+            Integer i = controller.InputData();
+            if (i % 100 == 0) {
+                server.WithdrawCurrency(new BigDecimal(i));
+                controller.SendToDisplay("Success operation");
+            } else {
+                controller.SendToDisplay("The amount must be a multiple of 100");
+                return;
+            }
         } else {
-            controller.SendToDisplay("Invalid operation");
+            controller.SendToDisplay("Invalid operation, wrong PIN");
             System.exit(0);
         }
     }
@@ -46,10 +59,16 @@ public class TerminalImpl implements Terminal {
     public void Deposit() {
         if (this.isConnected) {
             controller.SendToDisplay("Enter amount:");
-            server.DepositCurrency(new BigDecimal(controller.InputData()));
-            controller.SendToDisplay("Success");
+            Integer i = controller.InputData();
+            if (i % 100 == 0) {
+                server.DepositCurrency(new BigDecimal(i));
+                controller.SendToDisplay("Success operation");
+            } else {
+                controller.SendToDisplay("The amount must be a multiple of 100");
+                return;
+            }
         } else {
-            controller.SendToDisplay("Invalid operation");
+            controller.SendToDisplay("Invalid operation, wrong PIN");
             System.exit(0);
         }
     }
@@ -58,7 +77,7 @@ public class TerminalImpl implements Terminal {
         if (this.isConnected) {
             controller.SendToDisplay("Your balance: " + BigDecimalToString(server.CheckBalance()));
         } else {
-            controller.SendToDisplay("Invalid operation");
+            controller.SendToDisplay("Invalid operation, wrong PIN");
             System.exit(0);
         }
     }
@@ -67,7 +86,7 @@ public class TerminalImpl implements Terminal {
         if (this.isConnected) {
             System.exit(0);
         } else {
-            controller.SendToDisplay("Invalid operation");
+            controller.SendToDisplay("Invalid operation, wrong PIN");
             System.exit(0);
         }
     }

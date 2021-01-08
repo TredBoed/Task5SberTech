@@ -3,16 +3,16 @@ package com.school4;
 import java.math.BigDecimal;
 
 public class Bill {
-    private Integer userId;
-    private Integer userPin;
+    private String userId;
+    private String userPin;
     private BigDecimal currency;
 
     public Bill() {
-        this.userId = 0;
+        this.userId = "";
         this.currency = new BigDecimal(0);
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -20,9 +20,9 @@ public class Bill {
         return currency;
     }
 
-    public Integer getUserPin() { return userPin; }
+    public String getUserPin() { return userPin; }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -31,13 +31,13 @@ public class Bill {
     }
 
 
-    public void CreateBill(Integer userId, Integer userPin) {
+    public void CreateBill(String userId, String userPin) {
         this.userId = userId;
         this.userPin = userPin;
         this.currency = new BigDecimal(0);
     }
 
-    public void CreateBill(Integer userId, Integer userPin, BigDecimal currency) {
+    public void CreateBill(String userId, String userPin, BigDecimal currency) {
         this.userId = userId;
         this.userPin = userPin;
         this.currency = currency;
